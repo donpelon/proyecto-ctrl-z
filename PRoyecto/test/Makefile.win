@@ -1,0 +1,35 @@
+# Project: Project1
+# Makefile created by Dev-C++ 5.3.0.3
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = main.o ctrl_z.o f_write.o $(RES)
+LINKOBJ  = main.o ctrl_z.o f_write.o $(RES)
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW32/lib" -static-libstdc++ -static-libgcc -std=c99 -mwindows -g3
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include"
+BIN      = Project1.exe
+CXXFLAGS = $(CXXINCS)  -std=c99 -g3
+CFLAGS   = $(INCS)  -std=c99 -g3
+RM       = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+ctrl_z.o: ctrl_z.c
+	$(CC) -c ctrl_z.c -o ctrl_z.o $(CFLAGS)
+
+f_write.o: f_write.c
+	$(CC) -c f_write.c -o f_write.o $(CFLAGS)
